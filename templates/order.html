@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/semantic.min.css" %}">
+    <script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "js/semantic.js" %}"></script>
+
+    <link rel="stylesheet" type="text/css" href={% static "css/ind.css" %} />
+
+</head>
+<body>
+<div class="ui segment">
+    <img class="ui centered medium image" src="/static/images/03.png" style="width: 50%">
+<div class="ig">
+    <img src="{% static "images/04.png" %}" />
+</div>
+
+<form  method="POST" class="ui form segment">
+    {% csrf_token %}
+  <p>購買車票</p>
+  <div class="two fields">
+    <div class="field">
+      <label>訂購者名稱</label>
+      <input placeholder="First Name" name="name" type="text">
+    </div>
+    <div class="field">
+      <label>出發站</label>
+        <select class="ui search dropdown"  name="start">
+            <option value="底層">底層</option>
+            <option value="投身處">投身處</option>
+            <option value="毒沼">毒沼</option>
+            <option value="破戒僧">破戒僧</option>
+            <option value="菜" >菜</option>
+            <option value="古廟" >古廟</option>
+            <option value="正門" >正門</option>
+            <option value="待命室" >待命室</option>
+            <option value="天守閣" >天守閣</option>
+        </select>
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <label>票數</label>
+      <input placeholder="票" type="text" size="2"  maxlength="2" name="ticket" >
+    </div>
+    <div class="field">
+      <label>終點站</label>
+      <select class="ui search dropdown" name="end">
+            <option value="底層" >底層</option>
+            <option value="投身處" >投身處</option>
+            <option value="毒沼" >毒沼</option>
+            <option value="破戒僧" >破戒僧</option>
+            <option value="菜" >菜</option>
+            <option value="古廟" >古廟</option>
+            <option value="正門" >正門</option>
+            <option value="待命室" >待命室</option>
+            <option value="天守閣" >天守閣</option>
+        </select>
+    </div>
+  </div>
+  <div class="inline field">
+    <div class="ui checkbox">
+      <input type="checkbox" name="terms">
+      <label>我同意協定方案</label>
+    </div>
+  </div>
+  <input class="ui submit button" type="submit" value="送出" name="sum">
+  <div class="ui error message"></div>
+</form>
+<script>
+    $('.ui.form')
+  .form({
+    fields: {
+      name: {
+        identifier: 'name',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : '請輸入名稱'
+          }
+        ]
+      },
+      username: {
+        identifier: 'ticket',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : '請輸入票數'
+          }
+        ]
+      },
+      terms: {
+        identifier: 'terms',
+        rules: [
+          {
+            type   : 'checked',
+            prompt : 'You must agree to the terms and conditions'
+          }
+        ]
+      }
+    }
+  })
+;
+</script>
+  </div>
+</body>
+</html>
